@@ -82,7 +82,6 @@ app.delete("/goals/:id", async (req, res) => {
     res.status(500).json({ message: "Failed to delete goal." });
   }
 });
-
 mongoose.connect(
   `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongodb:27017/?authSource=admin`,
   {

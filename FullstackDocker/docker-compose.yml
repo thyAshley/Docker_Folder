@@ -1,0 +1,30 @@
+version: "3.8"
+services:
+  mongodb:
+    image: "mongo"
+    restart: always
+    volumes:
+      - "data:/data/db"
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=ash
+      - MONGO_INITDB_ROOT_PASSWORD=test123
+
+  backend:
+    build:
+      context: "./backend"
+      dockerfile: "Dockerfile"
+    image: "backend"
+    env_file:
+      - "./env/backend.env"
+    ports:
+      - "80:80"
+    volumes:
+      - "logs:/app/logs"
+      - "./backend:/app"
+      - "/app/node_modules"
+    depends_on:
+      - "mongodb"
+
+volumes:
+  data:
+  logs:
