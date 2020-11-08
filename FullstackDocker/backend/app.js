@@ -84,7 +84,7 @@ app.delete("/goals/:id", async (req, res) => {
 });
 
 mongoose.connect(
-  "mongodb://ash:test123@mongodb:27017/?authSource=admin",
+  `mongodb://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@mongodb:27017/?authSource=admin`,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
