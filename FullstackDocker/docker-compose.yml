@@ -5,9 +5,8 @@ services:
     restart: always
     volumes:
       - "data:/data/db"
-    environment:
-      - MONGO_INITDB_ROOT_USERNAME=ash
-      - MONGO_INITDB_ROOT_PASSWORD=test123
+    env_file:
+      - "./env/mongo.env"
 
   backend:
     build:
