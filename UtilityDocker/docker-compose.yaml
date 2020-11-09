@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  backend:
+    build: "./"
+    image: "backend"
+    container_name: "backend-app"
+    tty: true
+    stdin_open: true
+    volumes:
+      - "./:/app"
