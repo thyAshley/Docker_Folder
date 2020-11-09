@@ -24,6 +24,20 @@ services:
     depends_on:
       - "mongodb"
 
+  frontend:
+    build:
+      context: "./frontend"
+      dockerfile: "Dockerfile"
+    image: "frontend"
+    depends_on:
+      - "backend"
+    ports:
+      - "3000:3000"
+    volumes:
+      - "./frontend/src:/app/src"
+    stdin_open: true
+    tty: true
+
 volumes:
   data:
   logs:
