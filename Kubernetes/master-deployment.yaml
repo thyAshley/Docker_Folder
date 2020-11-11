@@ -29,4 +29,11 @@ spec:
     spec:
       containers:
         - name: kube-node
-          image: "thyashley/kube-node"
+          image: "thyashley/kube-node:2"
+          imagePullPolicy: Always
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            periodSeconds: 10
+            initialDelaySeconds: 5
