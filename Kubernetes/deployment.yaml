@@ -4,10 +4,14 @@ metadata:
   name: first-app-deployment
 spec:
   replicas: 1
+  selector:
+    matchLabels:
+      app: first-app
   template:
     metadata:
       labels:
         app: first-app
+        tier: backend
     spec:
       containers:
         - name: kube-node
